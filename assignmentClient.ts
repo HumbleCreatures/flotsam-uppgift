@@ -1,4 +1,4 @@
-type Assignment = {
+export type Assignment = {
   id: string;
   title: string;
   userId: string;
@@ -6,12 +6,12 @@ type Assignment = {
 
 export async function getAllAssignments() : Promise<Assignment[]> {
   const assignments = [
-    { id: '10', title: 'Title A', userId: '1' },
-    { id: '3', title: 'Title B', userId: '2' },
-    { id: '17', title: 'Title C', userId: '3' },
-    { id: '8', title: 'Title D', userId: '1' },
-    { id: '2', title: 'Title E', userId: '2' },
-    { id: '33', title: 'Title F', userId: '3' },
+    { id: '10', title: 'Title XA', userId: '1' },
+    { id: '3', title: 'Title YB', userId: '2' },
+    { id: '17', title: 'Title XC', userId: '3' },
+    { id: '8', title: 'Title YD', userId: '1' },
+    { id: '2', title: 'Title XE', userId: '2' },
+    { id: '33', title: 'Title YF', userId: '3' },
   ];
 
   return new Promise(res => setTimeout(() => {
@@ -19,7 +19,7 @@ export async function getAllAssignments() : Promise<Assignment[]> {
   }, 1000));
 }
 
-type User = {
+export type User = {
   id: string;
   name: string;
 }
@@ -45,3 +45,16 @@ export const expectedResult = [
   { id: '8', title: 'Title D', user: { id: '1', name: 'User Z', numberOfPosts: 2 } },
   { id: '10', title: 'Title A', user: { id: '1', name: 'User Z', numberOfPosts: 2 } },  
 ];
+
+export const expectedResultObject = {
+    X: [
+        { id: '2', title: 'Title XE', userId: '2' },
+        { id: '10', title: 'Title XA', userId: '1' }, 
+        { id: '17', title: 'Title XC', userId: '3' },
+      ],
+    Y: [
+      { id: '3', title: 'Title YB', userId: '2' }, 
+      { id: '8', title: 'Title YD', userId: '1' },
+      { id: '33', title: 'Title YF', userId: '3' }
+    ]
+};
