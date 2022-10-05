@@ -6,12 +6,12 @@ export type Assignment = {
 
 export async function getAllAssignments() : Promise<Assignment[]> {
   const assignments = [
-    { id: '10', title: 'Title XA', userId: '1' },
-    { id: '3', title: 'Title YB', userId: '2' },
-    { id: '17', title: 'Title XC', userId: '3' },
-    { id: '8', title: 'Title YD', userId: '1' },
-    { id: '2', title: 'Title XE', userId: '2' },
-    { id: '33', title: 'Title YF', userId: '3' },
+    { id: '10', title: 'Title A', userId: '1' , tag: 'X,Y' },
+    { id: '3', title: 'Title B', userId: '2', tag: 'X,Y,Z'},
+    { id: '17', title: 'Title C', userId: '3', tag: 'Y'},
+    { id: '8', title: 'Title D', userId: '1', tag: 'X' },
+    { id: '2', title: 'Title E', userId: '2', tag: 'X,Y' },
+    { id: '33', title: 'Title F', userId: '3', tag: 'Z' },
   ];
 
   return new Promise(res => setTimeout(() => {
@@ -48,13 +48,21 @@ export const expectedResult = [
 
 export const expectedResultObject = {
     X: [
-        { id: '2', title: 'Title XE', userId: '2' },
-        { id: '10', title: 'Title XA', userId: '1' }, 
-        { id: '17', title: 'Title XC', userId: '3' },
+      { id: '2', title: 'Title E', userId: '2', tag: 'X,Y' },
+      { id: '3', title: 'Title B', userId: '2', tag: 'X,Y,Z'},
+      { id: '8', title: 'Title D', userId: '1', tag: 'X' },
+      { id: '10', title: 'Title A', userId: '1' , tag: 'X,Y' },
+        
+
       ],
     Y: [
-      { id: '3', title: 'Title YB', userId: '2' }, 
-      { id: '8', title: 'Title YD', userId: '1' },
-      { id: '33', title: 'Title YF', userId: '3' }
+      { id: '2', title: 'Title E', userId: '2', tag: 'X,Y' },
+      { id: '3', title: 'Title B', userId: '2', tag: 'X,Y,Z'},
+      { id: '10', title: 'Title A', userId: '1' , tag: 'X,Y' },
+      { id: '17', title: 'Title C', userId: '3', tag: 'Y'},
+    ],
+    Z: [ 
+      { id: '3', title: 'Title B', userId: '2', tag: 'X,Y,Z'},
+      { id: '33', title: 'Title F', userId: '3', tag: 'Z' }
     ]
 };
