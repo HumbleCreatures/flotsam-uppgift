@@ -50,10 +50,9 @@ export const expectedResultObject = {
     X: [
       { id: '2', title: 'Title E', userId: '2', tag: 'X,Y' },
       { id: '3', title: 'Title B', userId: '2', tag: 'X,Y,Z'},
-      { id: '8', title: 'Title D', userId: '1', tag: 'X' },
+      { id: '8', title: 'Title D', userId: '1', tag: 'X'},
       { id: '10', title: 'Title A', userId: '1' , tag: 'X,Y' },
-        
-
+      
       ],
     Y: [
       { id: '2', title: 'Title E', userId: '2', tag: 'X,Y' },

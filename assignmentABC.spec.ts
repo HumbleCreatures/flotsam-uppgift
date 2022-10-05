@@ -1,7 +1,7 @@
 import { expectedResultObject, getAllAssignments } from "./assignmentClient";
 
-describe("display a list of all the assignment with username and number of assignments per user", () => {
-    it("should be sorted on by username and assignment id", async () => {
+describe("display a dictionary of all tags with a lost of all the assignments with that tag", () => {
+    it("should be sorted on by assignment id within each tag", async () => {
         const result = await getAllAssignments(); 
         
 
