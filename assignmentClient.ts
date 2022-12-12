@@ -24,11 +24,31 @@ export type User = {
   name: string;
 }
 
+export type Friendship = {
+  toId: string;
+  fromId: string;
+}
+
+const friendshipDatabase:Friendship[] = [
+  { toId: '1', fromId: '2' },
+  { toId: '1', fromId: '3' },
+  { toId: '2', fromId: '1' },
+  { toId: '2', fromId: '3' },
+  { toId: '3', fromId: '1' },
+]
+
 const userDataBase:User[] = [
   { id: '1', name: 'User Z' },
   { id: '2', name: 'User X' },
   { id: '3', name: 'User Y' },
 ]
+
+export async function getFriendship(id: string) : Promise<Friendship[]|undefined> {
+  return new Promise(res => setTimeout(() => {
+    const friendships = friendshipDatabase.filter(friendship => friendship.toId === id);
+    res(friendships);
+  }, 1000));
+};
 
 export async function getUserById(id: string) : Promise<User|undefined> {
   return new Promise(res => setTimeout(() => {
@@ -37,13 +57,14 @@ export async function getUserById(id: string) : Promise<User|undefined> {
   }, 1000));
 };
 
+
 export const expectedResult = [
-  { id: '2', title: 'Title E', user: { id: '2', name: 'User X', numberOfPosts: 2 } },
-  { id: '3', title: 'Title B', user: { id: '2', name: 'User X', numberOfPosts: 2 } },
-  { id: '17', title: 'Title C', user: { id: '3', name: 'User Y', numberOfPosts: 2 } },
-  { id: '33', title: 'Title F', user: { id: '3', name: 'User Y', numberOfPosts: 2 } },
-  { id: '8', title: 'Title D', user: { id: '1', name: 'User Z', numberOfPosts: 2 } },
-  { id: '10', title: 'Title A', user: { id: '1', name: 'User Z', numberOfPosts: 2 } },  
+  { id: '2', title: 'Title E', user: { id: '2', name: 'User X', friends: ['User Z', 'User Y'] } },
+  { id: '3', title: 'Title B', user: { id: '2', name: 'User X', friends: ['User Z', 'User Y'] } },
+  { id: '17', title: 'Title C', user: { id: '3', name: 'User Y', friends: ['User X'] } },
+  { id: '33', title: 'Title F', user: { id: '3', name: 'User Y', friends: ['User X'] } },
+  { id: '8', title: 'Title D', user: { id: '1', name: 'User Z', friends: ['User X', 'User Y'] } },
+  { id: '10', title: 'Title A', user: { id: '1', name: 'User Z', friends: ['User X', 'User Y'] } },  
 ];
 
 export const expectedResultObject = {
